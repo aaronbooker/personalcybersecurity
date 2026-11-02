@@ -101,15 +101,30 @@ a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-ra
 .card .go span { display: inline-block; transition: transform .15s ease; }
 .card:hover .go span { transform: translateX(4px); }
 
-.about { margin: 2.75rem 0 0; border-left: 5px solid var(--teal); padding: .25rem 0 .25rem 1.1rem; font-size: 1.15rem; max-width: 62ch; }
-.about strong { font-weight: 800; color: var(--navy); }
+/* About */
+.about { margin-top: 3.5rem; padding-top: 3rem; border-top: 2px solid var(--rule); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: start; }
+.about-text { min-width: 0; }
+.about-text h2 { margin: 0 0 1rem; color: var(--navy); font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance; }
+.about-text p { margin: 0 0 1rem; max-width: 62ch; }
+.about-text p:last-child { margin-bottom: 0; }
+.creds { background: var(--white); border: 3px solid var(--navy); border-radius: 22px; padding: 1.4rem 1.6rem 1.5rem; min-width: 0; }
+.creds dl { margin: 0; display: grid; gap: 1.1rem; }
+.creds dt { font-weight: 800; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--brick); }
+.creds dd { margin: .2rem 0 0; color: var(--ink); }
+.creds dd a { font-weight: 700; color: var(--navy); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.creds dd a:hover { color: var(--brick); }
+.creds .linkedin { margin: 1.3rem 0 0; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+.creds .linkedin a { display: inline-block; background: var(--navy); color: var(--white); text-decoration: none; font-weight: 800; padding: .7rem 1.2rem; border-radius: 999px; }
+.creds .linkedin a:hover { background: var(--brick); }
 
 /* Footer */
 .contact { background: var(--navy); color: var(--white); }
-.contact .wrap { padding-block: 2.5rem 2.75rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 2.5rem; }
+.contact .wrap { padding-block: 3rem 3rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.75rem 2.5rem; }
+.contact .intro { margin: 0 0 1.25rem; max-width: 48ch; color: rgba(255,255,255,.88); }
 .contact .eyebrow { color: var(--gold); margin-bottom: .5rem; }
 .contact h2 { margin: 0 0 .5rem; font-size: clamp(1.8rem, 4vw, 2.3rem); font-weight: 900; letter-spacing: -0.025em; }
-.contact address { font-style: normal; display: grid; gap: .15rem; font-size: 1.1rem; }
+.contact address { font-style: normal; display: grid; gap: .35rem; font-size: 1.1rem; }
+.contact address .lbl { display: inline-block; min-width: 4.25rem; color: var(--gold); font-weight: 800; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
 .contact address a { text-decoration: none; }
 .contact address a:hover { color: var(--gold); text-decoration: underline; }
 .btn { display: inline-block; background: var(--gold); color: var(--navy); text-decoration: none; font-weight: 800; font-size: 1.1rem; padding: .95rem 1.6rem; border-radius: 999px; }
@@ -119,6 +134,7 @@ a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-ra
 
 @media (max-width: 760px) {
   .cards { grid-template-columns: 1fr; }
+  .about { grid-template-columns: 1fr; }
   .hero::before { width: 120%; right: -60%; top: -40%; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .card:hover { transform: none; } }
@@ -166,18 +182,46 @@ a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-ra
       </a>
     </div>
 
-    <p class="about"><strong>About me.</strong> I’m a skilled generalist with decades in technology, and I’m teaching the first AI course at Whatcom Community College.</p>
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-text">
+        <p class="eyebrow">About Aaron</p>
+        <h2 id="about-title">Decades in technology, explained in plain English.</h2>
+        <p>I’m a skilled generalist. I’ve spent my career in technology, and I like nothing better than helping people get comfortable with tools that look intimidating from the outside.</p>
+        <p>I teach Computer Information Systems at Whatcom Community College, including the college’s first AI course, and I was awarded a National Community College Cybersecurity Fellowship funded by the National Science Foundation.</p>
+        <p>Through my experience running my own small businesses, including Varvid, and supporting small businesses with business-focused IT through Hardlines, I’ve learned how businesses actually run, what owners and team leaders juggle every day, and where technology helps or gets in the way.</p>
+        <p>At Varvid I also led sales and marketing, and our clients, including Nike, Adobe and Intuit, mostly streamed live for marketing. Nearly 17 years of working alongside them gave me a close look at how companies like these use marketing and social media effectively.</p>
+        <p>Today I bring that experience to small businesses, nonprofits and community groups across Whatcom, Skagit, San Juan and Island counties.</p>
+      </div>
+      <aside class="creds" aria-label="Credentials">
+        <dl>
+          <div>
+            <dt>Teaching</dt>
+            <dd>Adjunct faculty, Computer Information Systems, Whatcom Community College. <a href="https://www.whatcom.edu/academics/areas-of-study/information-technology-computer-science/cybersecurity/contacts">See my faculty listing</a></dd>
+          </div>
+          <div>
+            <dt>Cybersecurity</dt>
+            <dd>National Community College Cybersecurity Fellowship, 2025, funded by the National Science Foundation</dd>
+          </div>
+          <div>
+            <dt>Live Streaming</dt>
+            <dd>Founder of Varvid, live streaming for clients including Nike, Adobe and Intuit</dd>
+          </div>
+        </dl>
+        <p class="linkedin"><a href="https://www.linkedin.com/in/aaronbooker/">Learn more about me on LinkedIn</a></p>
+      </aside>
+    </section>
   </div>
 </main>
 
-<footer class="contact" aria-labelledby="talk">
+<footer class="contact" id="contact" aria-labelledby="talk">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Questions? Let’s talk.</p>
-      <h2 id="talk">Aaron Booker</h2>
+      <p class="eyebrow">Contact</p>
+      <h2 id="talk">Let’s talk about your group.</h2>
+      <p class="intro">Tell me a little about your business, team or nonprofit and what you’d like AI to help with. Call or email, whichever is easier.</p>
       <address>
-        <a href="tel:+13609201339">360.920.1339</a>
-        <a href="mailto:aaron@aaronbooker.com">aaron@aaronbooker.com</a>
+        <span><span class="lbl">Phone</span> <a href="tel:+13609201339">360.920.1339</a></span>
+        <span><span class="lbl">Email</span> <a href="mailto:aaron@aaronbooker.com">aaron@aaronbooker.com</a></span>
       </address>
     </div>
     <a class="btn" href="mailto:aaron@aaronbooker.com">Email Aaron</a>
